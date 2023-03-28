@@ -1,8 +1,0 @@
-version: "3.9"
-
-services:
-  php-apache2:
-    container_name: php-apache2
-    ports:
-      - "8080:80"
-    build: '.'
