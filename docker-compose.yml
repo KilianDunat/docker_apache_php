@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  matchjob:
+    container_name: matchjob
+    ports:
+      - "8080:80"
+    build: '.'
+    depends_on:
+      - mariadb
+
+  mariadb:
+    container_name: mariadb
+    image: mariadb:latest
+    ports:
+      - "9306:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-matchjob}
+      MYSQL_USER: ${MYSQL_USER:-matchjob_user}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-matchjob_pass}
